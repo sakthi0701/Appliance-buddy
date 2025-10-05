@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 
 // For now, we'll use a basic type definition
 // TODO: Import proper database types from shared folder
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Database = any
 
 // Initialize Supabase client with service role key for backend operations
@@ -44,6 +45,7 @@ export class ApplianceBackendService {
     return data
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static async createAppliance(userId: string, applianceData: any) {
     if (!supabase) {
       throw new Error('Supabase not configured')
@@ -62,6 +64,7 @@ export class ApplianceBackendService {
     return data
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static async updateAppliance(userId: string, applianceId: string, updates: any) {
     if (!supabase) {
       throw new Error('Supabase not configured')

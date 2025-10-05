@@ -12,9 +12,12 @@
     "dev:backend": "cd backend && npm run dev",
     "build:frontend": "cd frontend && npm run build",
     "build:backend": "cd backend && npm run build",
+    "build": "npm run install:all && npm run build:backend && npm run build:frontend",
     "install:frontend": "cd frontend && npm install",
     "install:backend": "cd backend && npm install",
     "install:all": "npm run install:frontend && npm run install:backend",
+    "start": "cd backend && npm start",
+    "start:prod": "npm run build && npm run start",
     "lint:frontend": "cd frontend && npm run lint",
     "lint:backend": "cd backend && npm run lint",
     "lint": "npm run lint:frontend && npm run lint:backend"

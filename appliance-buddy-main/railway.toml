@@ -1,0 +1,10 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "npm run start:prod"
+healthcheckPath = "/health"
+
+[variables]
+NIXPACKS_INSTALL_CMD = "npm ci"
+NIXPACKS_BUILD_CMD = "npm run build"
