@@ -13,12 +13,12 @@ build/
 */build/
 
 # Environment variables
-.env
+##.env
 ##.env.local
-.env.production
-.env.development
-*/.env
-*/.env.local
+##.env.production
+##.env.development
+##*/.env
+##*/.env.local
 
 # Logs
 logs
