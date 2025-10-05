@@ -19,7 +19,26 @@ const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001
 const NODE_ENV = process.env.NODE_ENV || 'development'
 
 // Middleware
-app.use(helmet())
+// Configure helmet with CSP that allows Supabase connections
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      connectSrc: [
+        "'self'",
+        "https://*.supabase.co",
+        "wss://*.supabase.co"
+      ],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", "data:", "https:"],
+      fontSrc: ["'self'"],
+      objectSrc: ["'none'"],
+      mediaSrc: ["'self'"],
+      frameSrc: ["'none'"]
+    }
+  }
+}))
 
 // Configure CORS for Railway deployment
 const corsOptions = {
