@@ -4,6 +4,15 @@ import { Database } from '../../../shared/types/database'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
+// Debug logging
+console.log('Supabase Configuration:', {
+  url: supabaseUrl,
+  hasKey: !!supabaseKey,
+  keyPreview: supabaseKey ? `${supabaseKey.substring(0, 20)}...` : 'undefined',
+  origin: typeof window !== 'undefined' ? window.location.origin : 'server',
+  hostname: typeof window !== 'undefined' ? window.location.hostname : 'server'
+})
+
 if (!supabaseUrl || !supabaseKey) {
   console.error('Supabase Environment Variables:', {
     hasUrl: !!supabaseUrl,
@@ -16,7 +25,14 @@ if (!supabaseUrl || !supabaseKey) {
   throw new Error('Missing Supabase environment variables. Please check your environment configuration.')
 }
 
-export const supabase = createClient<Database>(supabaseUrl, supabaseKey)
+export const supabase = createClient<Database>(supabaseUrl, supabaseKey, {
+  auth: {
+    // Add debug information for auth requests
+    debug: import.meta.env.DEV,
+    persistSession: true,
+    detectSessionInUrl: true
+  }
+})
 
 // Auth helpers
 export const auth = supabase.auth
