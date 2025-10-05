@@ -1,5 +1,6 @@
-[providers]
-providers = ["node@18"]
+[build]
+builder = "nixpacks"
+languages = ["node@18"]
 
 [phases.install]
 cmds = ["npm ci"]
