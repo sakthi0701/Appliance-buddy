@@ -1,5 +1,5 @@
 [providers]
-node = "18"
+providers = ["node@18"]
 
 [phases.install]
 cmds = ["npm ci"]
