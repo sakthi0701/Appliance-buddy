@@ -20,7 +20,8 @@
     "start:prod": "npm run build && npm run start",
     "lint:frontend": "cd frontend && npm run lint",
     "lint:backend": "cd backend && npm run lint",
-    "lint": "npm run lint:frontend && npm run lint:backend"
+    "lint": "npm run lint:frontend && npm run lint:backend",
+    "env:check": "echo 'Checking environment variables:' && echo 'VITE_SUPABASE_URL:' $VITE_SUPABASE_URL && echo 'VITE_SUPABASE_ANON_KEY:' ${VITE_SUPABASE_ANON_KEY:0:20}..."
   },
   "keywords": [
     "appliance",
