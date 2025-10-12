@@ -8,19 +8,16 @@
     "backend"
   ],
   "scripts": {
-    "dev:frontend": "cd frontend && npm run dev",
-    "dev:backend": "cd backend && npm run dev",
-    "build:frontend": "cd frontend && npm run build",
-    "build:backend": "cd backend && npm run build",
-    "build": "npm run install:all && npm run build:backend && npm run build:frontend",
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "install:all": "npm run install:frontend && npm run install:backend",
     "install:frontend": "cd frontend && npm install",
     "install:backend": "cd backend && npm install",
-    "install:all": "npm run install:frontend && npm run install:backend",
     "start": "cd backend && npm start",
     "start:prod": "npm run build && npm run start",
     "lint:frontend": "cd frontend && npm run lint",
     "lint:backend": "cd backend && npm run lint",
-    "lint": "npm run lint:frontend && npm run lint:backend",
     "env:check": "echo 'Checking environment variables:' && echo 'VITE_SUPABASE_URL:' $VITE_SUPABASE_URL && echo 'VITE_SUPABASE_ANON_KEY:' ${VITE_SUPABASE_ANON_KEY:0:20}..."
   },
   "keywords": [
@@ -37,5 +34,8 @@
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.0.0"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.12"
   }
 }
